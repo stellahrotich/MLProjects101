@@ -2,13 +2,13 @@
 # coding: utf-8
 
 # Machine Learning Project One
-# 
+# BlackFriday Data Exploration
 
 # In[1]:
 
 
-import numpy as np # linear algebra
-import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import numpy as np 
+import pandas as pd 
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -68,6 +68,7 @@ data = data.fillna(0)
 
 # In[9]:
 
+#check data after  replacing the missing values
 
 data.head(5)
 
@@ -83,6 +84,7 @@ gender
 
 # In[11]:
 
+#replace the gender with numeric for easy analysis as numeric values 0 and 1
 
 def numeric_gender(gender):
     if gender == 'M':
@@ -106,17 +108,17 @@ def numeric_age(age):
     if age == '0-17':
         return 0
     elif age == '18-25':
-        return 1
+        return 18
     elif age == '26-35':
-        return 2
+        return 26
     elif age == '36-45':
-        return 3
+        return 45
     elif age == '46-50':
-        return 4
+        return 46
     elif age == '51-55':
-        return 5
+        return 51
     else:
-        return 6
+        return 56
 data['Age'] = data['Age'].apply(numeric_age)
 
 
@@ -132,9 +134,9 @@ city_category
 
 def city_categories(city_category):
     if city_category == 'A':
-        return 2
-    elif city_category == 'B':
         return 1
+    elif city_category == 'B':
+        return 2
     else:
         return 0
 data['City_Category'] = data['City_Category'].apply(city_categories)
